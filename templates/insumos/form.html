@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if object %}Cambiar Estado{% else %}Nueva Solicitud{% endif %}{% endblock %}
+
+{% block content %}
+<h1>{% if object %}Cambiar Estado del Insumo #{{ object.pk }}{% else %}Nueva Solicitud para: {{ tarea.titulo }}{% endif %}</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">
+        Guardar
+    </button>
+
+    <a class="btn btn-secondary"
+       href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/insumos/">
+        Cancelar
+    </a>
+
+</form>
+{% endblock %}

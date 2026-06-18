@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Tarea{% endblock %}
+
+{% block content %}
+<h1>Eliminar: {{ tarea.titulo }}</h1>
+
+<div class="alert-danger">
+    <p>⚠️ <strong>Atención:</strong> Esta acción eliminará en cascada:</p>
+
+    <ul>
+        <li>Todas las asignaciones de esta tarea</li>
+        <li>Todas las evidencias</li>
+        <li>Todos los insumos solicitados</li>
+        <li>Todos los registros de actividad</li>
+    </ul>
+</div>
+<p>¿Estás seguro de que deseas continuar?</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="form-actions">
+
+        <button type="submit" class="btn btn-danger">
+            Sí, eliminar
+        </button>
+
+        <a class="btn btn-secondary"
+           href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/">
+            Cancelar
+        </a>
+
+    </div>
+
+</form>
+{% endblock %}

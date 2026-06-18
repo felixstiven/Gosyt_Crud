@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Insumo{% endblock %}
+
+{% block content %}
+<h1>Eliminar Solicitud #{{ insumo.pk }}</h1>
+
+<div class="alert-danger">
+    <p>
+        ⚠️ <strong>Atención:</strong> Esta acción eliminará esta solicitud de insumo de forma permanente.
+    </p>
+</div>
+
+<p>¿Estás seguro de que deseas eliminar esta solicitud de insumo?</p>
+
+<form method="post">
+    {% csrf_token %}
+
+    <div class="form-actions">
+
+        <button type="submit" class="btn btn-danger">
+            Sí, eliminar
+        </button>
+
+        <a class="btn btn-secondary"
+           href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/insumos/">
+            Cancelar
+        </a>
+
+    </div>
+
+</form>
+{% endblock %}

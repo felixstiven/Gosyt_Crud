@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS gosyt_db;
+USE gosyt_db;

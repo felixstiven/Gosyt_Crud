@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Insumo {{ insumo.pk }}{% endblock %}
+
+{% block content %}
+<h1>Solicitud de Insumo #{{ insumo.pk }}</h1>
+
+<p><strong>Tarea:</strong> {{ tarea.titulo }}</p>
+<p><strong>Material:</strong> {{ insumo.nombre_material }}</p>
+<p><strong>Cantidad:</strong> {{ insumo.cantidad }}</p>
+<p><strong>Justificación:</strong> {{ insumo.justificacion }}</p>
+<p><strong>Estado:</strong> {{ insumo.estado }}</p>
+<p><strong>Fecha:</strong> {{ insumo.fecha_solicitud }}</p>
+
+<hr>
+
+<a class="btn btn-secondary"
+   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/insumos/{{ insumo.pk }}/editar/">
+    Cambiar Estado
+</a>
+
+<a class="btn btn-danger"
+   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/insumos/{{ insumo.pk }}/eliminar/">
+    Eliminar
+</a>
+
+<a class="btn btn-secondary"
+   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/insumos/">
+    ← Volver a Insumos
+</a>
+
+{% endblock %}

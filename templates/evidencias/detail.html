@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Evidencia {{ evidencia.pk }}{% endblock %}
+
+{% block content %}
+<h1>Evidencia #{{ evidencia.pk }}</h1>
+
+<p><strong>Tarea:</strong> {{ tarea.titulo }}</p>
+<p><strong>Archivo:</strong> {{ evidencia.ruta_archivo }}</p>
+<p><strong>Tipo:</strong> {{ evidencia.tipo_archivo }}</p>
+<p><strong>Comentario:</strong> {{ evidencia.comentario }}</p>
+<p><strong>Fecha:</strong> {{ evidencia.fecha_subida }}</p>
+
+<hr>
+
+<a class="btn btn-danger"
+   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/evidencias/{{ evidencia.pk }}/eliminar/">
+    Eliminar
+</a>
+
+<a class="btn btn-secondary"
+   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/evidencias/">
+    ← Volver a Evidencias
+</a>
+
+{% endblock %}

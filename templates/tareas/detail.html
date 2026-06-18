@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ tarea.titulo }}{% endblock %}
+
+{% block content %}
+<h1>{{ tarea.titulo }}</h1>
+
+<p><strong>Descripción:</strong> {{ tarea.descripcion }}</p>
+<p><strong>Prioridad:</strong> {{ tarea.prioridad }}</p>
+<p><strong>Estado:</strong> {{ tarea.estado }}</p>
+<p><strong>Fecha límite:</strong> {{ tarea.fecha_limite }}</p>
+<p><strong>Ubicación:</strong> {{ tarea.ubicacion }}</p>
+
+<hr>
+
+{% if usuario.rol == 'admin_empresa' or usuario.rol == 'coordinador' %}
+
+    <a class="btn btn-secondary"
+       href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/editar/">
+        Editar
+    </a>
+
+    <a class="btn btn-danger"
+       href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/eliminar/">
+        Eliminar
+    </a>
+
+    <a class="btn btn-primary"
+       href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/asignaciones/">
+        Gestionar Asignaciones
+    </a>
+
+{% endif %}
+
+{% if usuario.rol == 'tecnico' %}
+
+    {% if es_lider %}
+        <p>✅ Eres el técnico líder de esta tarea.</p>
+
+        <a class="btn btn-primary"
+           href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/evidencias/">
+            Evidencias
+        </a>
+
+        <a class="btn btn-primary"
+           href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/insumos/">
+            Insumos
+        </a>
+
+    {% endif %}
+
+    <a class="btn btn-primary"
+       href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/actividad/">
+        Registrar Actividad
+    </a>
+
+{% endif %}
+
+<hr>
+
+<a class="btn btn-secondary"
+   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/">
+    ← Volver a Tareas
+</a>
+
+{% endblock %}

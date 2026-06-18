@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ usuario.nombre }}
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ usuario.nombre }}</h1>
+
+<div class="form-card">
+
+    <p>
+        <strong>Correo:</strong>
+        {{ usuario.correo }}
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Rol:</strong>
+        {{ usuario.rol }}
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Área:</strong>
+        {{ usuario.area }}
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Cargo:</strong>
+        {{ usuario.cargo }}
+    </p>
+
+    <br>
+
+    <p>
+        <strong>Empresa:</strong>
+        {{ empresa.nombre_empresa }}
+    </p>
+
+    <div class="form-actions">
+
+        <a href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/editar/"
+           class="btn btn-primary">
+            Editar
+        </a>
+
+        <a href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/eliminar/"
+           class="btn btn-danger">
+            Eliminar
+        </a>
+
+    </div>
+
+</div>
+
+<div style="margin-top:20px;">
+
+    {% if usuario.rol == 'admin_empresa' or usuario.rol == 'coordinador' %}
+        <a href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/"
+           class="btn btn-primary">
+            → Ir a Tareas
+        </a>
+
+    {% elif usuario.rol == 'tecnico' %}
+
+        <a href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/"
+           class="btn btn-primary">
+            → Ver mis Tareas
+        </a>
+
+    {% endif %}
+
+    <a href="/empresas/{{ empresa.pk }}/usuarios/"
+       class="btn btn-secondary">
+        ← Volver a Usuarios
+    </a>
+
+</div>
+
+{% endblock %}

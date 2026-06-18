@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ empresa.nombre_empresa }}{% endblock %}
+
+{% block content %}
+<h1>{{ empresa.nombre_empresa }}</h1>
+
+<p><strong>Estado:</strong> {{ empresa.estado }}</p>
+
+<p><strong>Fecha de registro:</strong> {{ empresa.fecha_registro }}</p>
+
+<hr>
+
+<a class="btn btn-primary"
+   href="{% url 'empresas:update' empresa.pk %}">
+    Editar
+</a>
+
+<a class="btn btn-danger"
+   href="{% url 'empresas:delete' empresa.pk %}">
+    Eliminar
+</a>
+
+<a class="btn btn-secondary"
+   href="{% url 'empresas:list' %}">
+    ← Volver a la lista
+</a>
+
+<hr>
+
+<a class="btn btn-primary"
+   href="/empresas/{{ empresa.pk }}/usuarios/">
+    Ver usuarios de esta empresa →
+</a>
+
+{% endblock %}

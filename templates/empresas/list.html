@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Empresas{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Empresas</h1>
+
+    <a href="{% url 'empresas:create' %}" class="btn btn-primary">
+        + Nueva Empresa
+    </a>
+</div>
+
+<div class="card">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Fecha Registro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for empresa in empresas %}
+            <tr>
+                <td>{{ empresa.nombre_empresa }}</td>
+                <td>{{ empresa.estado }}</td>
+                <td>{{ empresa.fecha_registro }}</td>
+                <td>
+                    <a href="{% url 'empresas:detail' empresa.pk %}">Ver</a>
+                    |
+                    <a href="{% url 'empresas:update' empresa.pk %}">Editar</a>
+                    |
+                    <a href="{% url 'empresas:delete' empresa.pk %}">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">
+                    No hay empresas registradas.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

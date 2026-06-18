@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Insumos — {{ tarea.titulo }}{% endblock %}
+
+{% block content %}
+<h1>Insumos de: {{ tarea.titulo }}</h1>
+
+<a class="btn btn-primary"
+   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/insumos/crear/">
+    + Nueva Solicitud
+</a>
+
+<hr>
+
+<table border="1" cellpadding="8">
+    <thead>
+        <tr>
+            <th>Material</th>
+            <th>Cantidad</th>
+            <th>Estado</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for insumo in insumos %}
+        <tr>
+            <td>{{ insumo.nombre_material }}</td>
+            <td>{{ insumo.cantidad }}</td>
+            <td>{{ insumo.estado }}</td>
+            <td>{{ insumo.fecha_solicitud }}</td>
+            <td>
+                <a class="btn btn-primary"
+                   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/insumos/{{ insumo.pk }}/">
+                    Ver
+                </a>
+
+                <a class="btn btn-secondary"
+                   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/insumos/{{ insumo.pk }}/editar/">
+                    Cambiar Estado
+                </a>
+
+                <a class="btn btn-danger"
+                   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/insumos/{{ insumo.pk }}/eliminar/">
+                    Eliminar
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No hay solicitudes de insumos.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<hr>
+
+<a class="btn btn-secondary"
+   href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/">
+    ← Volver a la Tarea
+</a>
+
+{% endblock %}

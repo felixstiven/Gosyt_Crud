@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Actividad{% endblock %}
+
+{% block content %}
+<h1>Registrar Actividad en: {{ tarea.titulo }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">
+        Guardar
+    </button>
+
+    <a class="btn btn-secondary"
+       href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/actividad/">
+        Cancelar
+    </a>
+
+</form>
+{% endblock %}

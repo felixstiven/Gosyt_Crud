@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Usuarios — {{ empresa.nombre_empresa }}{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+    <h1>Usuarios de {{ empresa.nombre_empresa }}</h1>
+
+    <a href="/empresas/{{ empresa.pk }}/usuarios/crear/"
+       class="btn btn-primary">
+        + Nuevo Usuario
+    </a>
+</div>
+
+<div class="card">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Área</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.correo }}</td>
+                <td>{{ usuario.rol }}</td>
+                <td>{{ usuario.area }}</td>
+                <td>
+                    <a href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/">Ver</a> |
+                    <a href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/editar/">Editar</a> |
+                    <a href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/eliminar/">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">
+                    No hay usuarios registrados.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+
+<div style="margin-top:20px;">
+    <a href="{% url 'empresas:list' %}"
+       class="btn btn-secondary">
+        ← Volver a Empresas
+    </a>
+</div>
+
+{% endblock %}

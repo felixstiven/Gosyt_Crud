@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if object %}Editar Usuario{% else %}Nuevo Usuario{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    {% if object %}
+        Editar: {{ object.nombre }}
+    {% else %}
+        Nuevo Usuario en {{ empresa.nombre_empresa }}
+    {% endif %}
+</h1>
+
+<div class="form-card">
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <div class="form-actions">
+
+            <button type="submit"
+                    class="btn btn-primary">
+                Guardar
+            </button>
+
+            <a href="/empresas/{{ empresa.pk }}/usuarios/"
+               class="btn btn-secondary">
+                Cancelar
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

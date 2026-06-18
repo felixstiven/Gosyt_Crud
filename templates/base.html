@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema de Tareas{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="brand">GoSYT</div>
+
+    <a href="{% url 'empresas:list' %}">
+        Empresas
+    </a>
+</nav>
+
+<div class="page">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Nueva Evidencia{% endblock %}
+
+{% block content %}
+<h1>Nueva Evidencia para: {{ tarea.titulo }}</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="btn btn-primary">
+        Guardar
+    </button>
+
+    <a class="btn btn-secondary"
+       href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/{{ tarea.pk }}/evidencias/">
+        Cancelar
+    </a>
+</form>
+
+{% endblock %}
