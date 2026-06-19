@@ -51,7 +51,7 @@ class TareaCreateView(CreateView):
         usuario = get_object_or_404(Usuario, pk=self.kwargs['usuario_id'])
         form.instance.empresa_id = self.kwargs['empresa_id']
         form.instance.coordinador = usuario
-        return super().form_valid(form)
+        return super().form_valid(form) 
 
     def get_success_url(self):
         return f"/empresas/{self.kwargs['empresa_id']}/usuarios/{self.kwargs['usuario_id']}/tareas/"

@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}Tareas — {{ usuario.nombre }}{% endblock %}
+{% block title %}
+    Tareas — {{ usuario.nombre }}
+{% endblock %}
 
 {% block content %}
+
 <h1>Tareas de {{ empresa.nombre_empresa }}</h1>
 
 <p>Usuario activo: <strong>{{ usuario.nombre }}</strong> ({{ usuario.rol }})</p>

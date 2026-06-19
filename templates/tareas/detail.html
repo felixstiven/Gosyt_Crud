@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ tarea.titulo }}{% endblock %}
+{% block title %}
+    {{ tarea.titulo }}
+{% endblock %}
 
 {% block content %}
+
 <h1>{{ tarea.titulo }}</h1>
 
 <p><strong>Descripción:</strong> {{ tarea.descripcion }}</p>

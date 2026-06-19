@@ -1,25 +1,26 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 
-{% block title %}{% if object %}Editar Tarea{% else %}Nueva Tarea{% endif %}{% endblock %}
+{% block title %} 
+   {% if object %}Editar Tarea{% else%}Nueva Tarea{% endif %}
+{% endblock %} 
 
 {% block content %}
-<h1>{% if object %}Editar: {{ object.titulo }}{% else %}Nueva Tarea{% endif %}</h1>
+<h1>
+  {% if object %}Editar: {{ object.titulo }}{% else %}Nueva Tarea{% endif %}
+</h1>
 
 <form method="post">
-    {% csrf_token %}
+  {% csrf_token %} {{ form.as_p }}
 
-    {{ form.as_p }}
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Guardar</button>
 
-    <div class="form-actions">
-        <button type="submit" class="btn btn-primary">
-            Guardar
-        </button>
-
-        <a class="btn btn-secondary"
-           href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/">
-            Cancelar
-        </a>
-    </div>
-
+    <a
+      class="btn btn-secondary"
+      href="/empresas/{{ empresa.pk }}/usuarios/{{ usuario.pk }}/tareas/"
+    >
+      Cancelar
+    </a>
+  </div>
 </form>
 {% endblock %}
