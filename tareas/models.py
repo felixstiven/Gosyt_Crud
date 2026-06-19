@@ -3,6 +3,7 @@ from empresas.models import Empresa
 from usuarios.models import Usuario
 
 class Tarea(models.Model):
+    objects = models.Manager()
     titulo = models.CharField(max_length=150)
     descripcion = models.TextField(blank=True, null=True)
     prioridad = models.CharField(max_length=5, blank=True, null=True)
